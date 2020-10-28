@@ -8,6 +8,8 @@ services:
             - .env
         environment:
             - API_PORT=${API_PORT}
+        ports:
+            - "${API_PORT}:${API_PORT}"
         depends_on:
             - db
         links:
