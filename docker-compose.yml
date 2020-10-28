@@ -1,0 +1,27 @@
+version: "3.6"
+volumes:
+    mongo-volume:
+services:
+    api:
+        build: .
+        container_name: api
+        entrypoint: npm start
+        env_file:
+            - .env
+        environment:
+            - API_PORT=${API_PORT}
+        depends_on:
+            - db
+        links:
+            - db
+    db:
+        image: mongo:latest
+        container_name: db
+        ports:
+            - 27017:27017
+        env_file:
+            - .env
+        environment:
+            - MONGO_INITDB_DATABASE=${DB_NAME}
+            - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
+            - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
