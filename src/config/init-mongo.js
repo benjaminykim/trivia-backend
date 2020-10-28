@@ -1,11 +1,13 @@
+require('dotenv').config()
+
 db.createUser(
 	{
-		user		: "user",
-		pwd			: "password",
+		user		: process.env.DB_USER,
+		pwd			: process.env.DB_PASSWORD,
 		roles		: [
 			{
 				role	: "readWrite",
-				db		: "db"
+				db		: process.env.DB_NAME
 			}
 		]
 	}
