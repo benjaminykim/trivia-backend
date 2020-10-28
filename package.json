@@ -1,0 +1,19 @@
+{
+  "name": "trivia-backend",
+  "version": "1.0.0",
+  "description": "Trivia Backend Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjaminykim/trivia-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjaminykim/trivia-backend/issues"
+  },
+  "homepage": "https://github.com/benjaminykim/trivia-backend#readme"
+}
