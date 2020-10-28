@@ -4,13 +4,15 @@
   "description": "Trivia Backend Application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prod": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/benjaminykim/trivia-backend.git"
   },
-  "author": "",
+  "author": "Benjamin Kim",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/benjaminykim/trivia-backend/issues"
