@@ -1,11 +1,9 @@
 version: "3.6"
-volumes:
-    mongo-volume:
 services:
     api:
         build: .
         container_name: api
-        entrypoint: npm start
+        entrypoint: npm run dev
         env_file:
             - .env
         environment:
@@ -14,14 +12,18 @@ services:
             - db
         links:
             - db
+        volumes:
+            - type: bind
+              source: ./src
+              target: /src
     db:
-        image: mongo:latest
+        image: postgres:12.2-alpine
         container_name: db
-        ports:
-            - 27017:27017
+        expose:
+            - 5432
         env_file:
             - .env
         environment:
-            - MONGO_INITDB_DATABASE=${DB_NAME}
-            - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
-            - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+            - PGDATA=/var/lib/data/postgresql/data/pgdata
+        volumes:
+            - ./data/pg:/var/lib/postgresql/data
