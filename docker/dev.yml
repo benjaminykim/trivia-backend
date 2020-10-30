@@ -1,0 +1,33 @@
+version: "3.6"
+services:
+    api:
+        build: .
+        container_name: api
+        entrypoint: npm run dev
+        env_file:
+            - .env
+        environment:
+            - API_PORT=${API_PORT}
+        ports:
+            - "${API_PORT}:${API_PORT}"
+        depends_on:
+            - db
+        links:
+            - db
+        volumes:
+            - type: bind
+              source: ./src
+              target: /api/src
+        tty: true
+        stdin_open: true
+    db:
+        image: postgres:12.2-alpine
+        container_name: db
+        expose:
+            - 5432
+        env_file:
+            - .env
+        environment:
+            - PGDATA=/var/lib/data/postgresql/data/pgdata
+        volumes:
+            - ./data/pg:/var/lib/postgresql/data
