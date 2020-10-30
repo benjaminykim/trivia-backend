@@ -26,7 +26,7 @@ elif [ $ARG = "dev" -o $ARG = "prod" ]
 then
     echo "Deploying ${ARG}...";
     ${CMD} -f ${DIR}${ARG}.yml down;
-    ${CMD} -f ${DIR}${ARG}.yml up;
+    ${CMD} -f ${DIR}${ARG}.yml up --build;
     if [ -z $ARG_2 ]
     then
         echo "Finished";
@@ -60,7 +60,10 @@ then
     docker exec -it api sh;
 elif [ $ARG = "db" ]
 then
-    docker exec -it db -U username -h 127.0.0.1 -p 5432 db_name;
+    docker exec -it db -U username -h 127.0.0.1 -p 5432 db;
+elif [ $ARG = "seed" ]
+then
+    ${CMD} -f ${DIR}${ARG}.yml up;
 else
     echo -e $USAGE;
 fi

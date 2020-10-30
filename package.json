@@ -4,13 +4,13 @@
   "description": "Trivia Backend Application",
   "main": "src/server.js",
   "scripts": {
-    "prod": "node src/server.js",
     "migrate": "cd src && npx sequelize-cli db:migrate && cd ..",
     "seed": "cd src && npx sequelize-cli db:seed:all && cd ..",
     "migrate:reset": "cd src && npx sequelize-cli db:migrate:undo:all && npm run migrate && npm run seed && cd ..",
     "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/server.js",
+    "prod": "nodemon --exec babel-node src/server.js"
   },
   "jest": {
     "testEnvironment": "node",

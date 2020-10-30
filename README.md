@@ -1,12 +1,33 @@
 # trivia-backend
 
+## Dependencies
+
+Download docker engine and docker compose in order to run the backend web application.
+
 ## Deployment
 
-For production deployment, clone the repository and run `npm install` to download dependencies. Then, run the command:
+We use a helper script `deploy.sh` to run all commands. It uses docker commands in order to build different modes of
+the backend application.
 
-`npm run prod`
+For local deployment, run:
 
-For local deployment (dev), instead run:
+`./deploy.sh dev`
 
-`npm run dev`
+If you are runnning local deployment for the first time, you will have to manually execute database migrations and
+seeding within the docker container:
 
+```
+./deploy.sh dev
+docker exec -it api sh
+cd src
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+```
+
+To run tests:
+
+`./deploy.sh test`
+
+To seed the database:
+
+`./deploy.sh seed`
