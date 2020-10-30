@@ -1,9 +1,9 @@
 FROM node:12.16.1-alpine
-WORKDIR api/src
+WORKDIR api
 COPY package.* .
+COPY .babelrc .
 RUN npm install
 EXPOSE 8080
-COPY ./src ./src
-COPY .env .
+COPY . .
 COPY .env ./src
 ENTRYPOINT [ "npm", "run", "dev" ]

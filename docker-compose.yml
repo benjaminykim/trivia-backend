@@ -17,7 +17,9 @@ services:
         volumes:
             - type: bind
               source: ./src
-              target: /src
+              target: /api/src
+        tty: true
+        stdin_open: true
     db:
         image: postgres:12.2-alpine
         container_name: db
