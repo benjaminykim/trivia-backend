@@ -4,6 +4,6 @@ COPY package.* .
 COPY .babelrc .
 RUN npm install
 EXPOSE 8080
-COPY . .
+COPY ./src ./src
 COPY .env ./src
 ENTRYPOINT [ "npm", "run", "dev" ]

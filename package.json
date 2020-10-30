@@ -5,10 +5,14 @@
   "main": "src/server.js",
   "scripts": {
     "prod": "node src/server.js",
-    "test": "jest",
+    "migrate": "cd src && npx sequelize-cli db:migrate && cd ..",
+    "seed": "cd src && npx sequelize-cli db:seed:all && cd ..",
+    "migrate:reset": "cd src && npx sequelize-cli db:migrate:undo:all && npm run migrate && npm run seed && cd ..",
+    "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
     "dev": "nodemon --exec babel-node src/server.js"
   },
-  "jest" : {
+  "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
@@ -38,6 +42,7 @@
     "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "cross-env": "^7.0.2",
     "jest": "^26.6.1",
     "nodemon": "^2.0.6",
     "supertest": "^6.0.0"
