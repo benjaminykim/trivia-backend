@@ -3,19 +3,13 @@ const dotenv = require('dotenv').config()
 const app = express();
 const Sequelize = require('sequelize');
 
-const config = {
-	"database": process.env.POSTGRES_DB,
-	"username": process.env.POSTGRES_USER,
-	"password": process.env.POSTGRES_PASSWORD,
-	"host": process.env.POSTGRES_DB,
-	"dialect": process.env.POSTGRES_HOST,
-};
+const dbConfig  = require('./config/database').database;
 
 const sequelize = new Sequelize(
-												config.database,
-												config.username,
-												config.password,
-												config);
+												dbConfig.database,
+												dbConfig.username,
+												dbConfig.password,
+												dbConfig);
 
 sequelize.authenticate()
 	.then(() => {
