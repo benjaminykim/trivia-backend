@@ -120,7 +120,6 @@ json = json.map(function(record) {
   return record;
 });
 
-console.log(json);
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {

@@ -16,3 +16,11 @@ describe('Get Endpoints', () => {
     expect(res.body.length).toEqual(10)
   })
 })
+
+describe('Get Score', () => {
+  it('should get scores', async () => {
+    const res = await request(app)
+      .get('/score')
+    expect(res.statusCode).toEqual(200)
+  })
+})
