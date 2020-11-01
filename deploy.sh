@@ -26,7 +26,7 @@ elif [ $ARG = "dev" -o $ARG = "prod" ]
 then
     echo "Deploying ${ARG}...";
     sudo ${CMD} -f ${DIR}${ARG}.yml down;
-    sudo ${CMD} -f ${DIR}${ARG}.yml up --build;
+    sudo ${CMD} -f ${DIR}${ARG}.yml up -d;
     if [ -z $ARG_2 ]
     then
         echo "Finished";
