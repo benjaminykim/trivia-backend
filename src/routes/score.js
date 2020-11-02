@@ -4,7 +4,7 @@ var _ = require('underscore');
 const db = require('../models');
 
 router.get('/', async function(req, res) {
-	const scores = await models.Stub.findAll({
+	const scores = await db.Score.findAll({
 		attributes: [
 			'user',
 			'score',
