@@ -4,7 +4,14 @@ var _ = require('underscore');
 const db = require('../models');
 
 router.get('/', async function(req, res) {
-	const scores = await db.Score.findAll();
+	const scores = await models.Stub.findAll({
+		attributes: [
+			'user',
+			'score',
+		],
+		order: [['score', 'DESC']],
+	}
+	);
 	res.status(200).send(scores);
 });
 
