@@ -68,3 +68,5 @@ Future features include:
 - show all questions
 - user model and auth
 - caching
+- CI/CD github actions
+- code coverage
